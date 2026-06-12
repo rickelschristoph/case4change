@@ -3,20 +3,16 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
 <title>Case for Change</title>
 
 <style>
-
-*{
-    margin:0;
-    padding:0;
-    box-sizing:border-box;
-}
+*{margin:0;padding:0;box-sizing:border-box}
 
 body{
     font-family:Arial, Helvetica, sans-serif;
-    background:linear-gradient(135deg,#07111f,#0f2747,#122f5f);
+    background:
+        radial-gradient(circle at top, rgba(0,255,255,.18), transparent 34%),
+        linear-gradient(135deg,#02040a,#07101f 55%,#000);
     color:white;
     text-align:center;
     overflow-x:hidden;
@@ -25,224 +21,217 @@ body{
 .hero{
     min-height:100vh;
     display:flex;
-    flex-direction:column;
     justify-content:center;
     align-items:center;
     padding:40px 20px;
+    position:relative;
+}
+
+.hero::before{
+    content:"";
+    position:absolute;
+    inset:0;
+    background:
+        linear-gradient(90deg,rgba(0,255,255,.04) 1px,transparent 1px),
+        linear-gradient(rgba(0,255,255,.04) 1px,transparent 1px);
+    background-size:50px 50px;
+    opacity:.7;
+}
+
+.card{
+    position:relative;
+    z-index:2;
+    width:100%;
+    max-width:1050px;
+    padding:42px;
+    background:rgba(3,8,18,.78);
+    border:1px solid rgba(0,255,255,.22);
+    border-radius:32px;
+    backdrop-filter:blur(14px);
+    box-shadow:
+        0 0 70px rgba(0,255,255,.16),
+        inset 0 0 45px rgba(255,255,255,.035);
 }
 
 .logo{
-    width:320px;
-    max-width:80%;
-    margin-bottom:30px;
-    filter:drop-shadow(0 0 25px rgba(0,229,255,0.35));
+    width:min(760px,95%);
+    margin-bottom:28px;
+    border-radius:24px;
+    box-shadow:0 0 45px rgba(0,255,255,.24);
+}
+
+.badge{
+    display:inline-block;
+    padding:10px 20px;
+    border-radius:999px;
+    border:1px solid rgba(0,255,255,.45);
+    color:#77ffff;
+    letter-spacing:3px;
+    text-transform:uppercase;
+    font-size:13px;
+    margin-bottom:24px;
 }
 
 h1{
-    font-size:clamp(42px,7vw,90px);
-    margin-bottom:15px;
-    letter-spacing:2px;
+    font-size:clamp(38px,6vw,78px);
+    line-height:1.05;
+    margin-bottom:22px;
+    letter-spacing:-1px;
 }
 
-.highlight{
-    color:#00e5ff;
+.gradient{
+    background:linear-gradient(90deg,#fff,#6ffcff,#9b7cff);
+    -webkit-background-clip:text;
+    background-clip:text;
+    color:transparent;
 }
 
-.subtitle{
-    font-size:clamp(20px,3vw,30px);
-    color:#c7d7ea;
-    margin-bottom:30px;
+.lead{
+    max-width:820px;
+    margin:0 auto;
+    font-size:clamp(20px,2.4vw,29px);
+    line-height:1.45;
+    color:rgba(255,255,255,.9);
 }
 
-.description{
-    max-width:900px;
-    font-size:22px;
+.text{
+    max-width:820px;
+    margin:24px auto 0;
+    font-size:18px;
     line-height:1.8;
-    color:#e7edf5;
-    margin-bottom:40px;
+    color:rgba(255,255,255,.72);
 }
 
 .button{
     display:inline-block;
-    padding:18px 40px;
-    background:#00e5ff;
-    color:#05111f;
+    margin-top:34px;
+    padding:16px 30px;
+    border-radius:999px;
     text-decoration:none;
     font-weight:bold;
-    border-radius:12px;
-    transition:0.3s;
-    margin-top:20px;
+    color:#041018;
+    background:linear-gradient(90deg,#68fff4,#9f7cff);
+    box-shadow:0 0 28px rgba(0,255,255,.32);
 }
 
-.button:hover{
-    transform:translateY(-3px);
-    box-shadow:0 0 25px rgba(0,229,255,0.5);
-}
-
-.music-section{
-    width:100%;
-    max-width:1000px;
-    margin-top:60px;
-    padding:40px;
-    background:rgba(255,255,255,0.07);
-    backdrop-filter:blur(12px);
-    border-radius:25px;
-    border:1px solid rgba(255,255,255,0.15);
-}
-
-.music-section h2{
-    font-size:34px;
-    color:#00e5ff;
-    margin-bottom:25px;
-}
-
-.music-text{
-    font-size:20px;
-    line-height:1.8;
-    color:#d8e8ff;
-    margin-bottom:25px;
+.music-box{
+    margin:38px auto 0;
+    max-width:820px;
 }
 
 .music-button{
-    background:linear-gradient(90deg,#00e5ff,#7b61ff);
-    color:white;
     border:none;
-    padding:18px 35px;
-    border-radius:50px;
-    font-size:18px;
+    border-radius:999px;
+    padding:17px 34px;
+    font-size:17px;
     font-weight:bold;
     cursor:pointer;
-    transition:0.3s;
-    box-shadow:0 0 25px rgba(0,229,255,0.35);
+    color:#041018;
+    background:linear-gradient(90deg,#68fff4,#9f7cff);
+    box-shadow:0 0 30px rgba(0,255,255,.38);
+    transition:.3s;
 }
 
 .music-button:hover{
-    transform:translateY(-3px);
-    box-shadow:0 0 30px rgba(0,229,255,0.6);
+    transform:translateY(-2px) scale(1.03);
+}
+
+.music-info{
+    margin-top:20px;
+    font-size:16px;
+    line-height:1.75;
+    color:rgba(255,255,255,.68);
 }
 
 .future-box{
-    margin-top:60px;
-    max-width:1000px;
-    font-size:24px;
-    line-height:1.8;
-    color:#ffffff;
+    margin:46px auto 0;
+    max-width:850px;
+    font-size:22px;
+    line-height:1.75;
+    color:rgba(255,255,255,.86);
 }
 
 .glow{
-    color:#00e5ff;
+    color:#77ffff;
     font-weight:bold;
 }
 
-footer{
-    margin-top:80px;
-    padding:30px;
-    color:#9db3ca;
+.footer{
+    margin-top:38px;
+    color:rgba(255,255,255,.45);
     font-size:14px;
 }
 
-.background-glow{
-    position:fixed;
-    top:50%;
-    left:50%;
-    width:1000px;
-    height:1000px;
-    transform:translate(-50%,-50%);
-    background:radial-gradient(circle,
-    rgba(0,229,255,0.18),
-    transparent 70%);
-    z-index:-1;
+@media(max-width:650px){
+    .card{padding:24px 18px;border-radius:24px}
+    .logo{width:100%}
 }
-
 </style>
-
 </head>
 
 <body>
 
-<div class="background-glow"></div>
-
 <section class="hero">
+    <main class="card">
 
-    <img src="LogoCfC.png" alt="Case for Change Logo" class="logo">
+        <img src="LogoCfC.png" alt="Case for Change Logo" class="logo">
 
-    <h1>
-        CASE FOR <span class="highlight">CHANGE</span>
-    </h1>
+        <div class="badge">Geschichten · Ideen · Veränderung</div>
 
-    <p class="subtitle">
-        Geschichten. Ideen. Veränderung.
-    </p>
+        <h1>
+            Eine Bühne für Ideen,<br>
+            die <span class="gradient">Zukunft bewegen.</span>
+        </h1>
 
-    <p class="description">
-        Jede Veränderung beginnt mit einer Idee.
-        <br><br>
-        Case for Change ist ein Podcast und eine Plattform für Menschen,
-        die bereit sind neue Wege zu denken, Herausforderungen offen
-        anzusprechen und gemeinsam Lösungen zu entwickeln.
-        <br><br>
-        Wir suchen Ideen, die unsere Gesellschaft ein Stück besser machen können.
-    </p>
-
-    <a class="button" href="#">
-        Informationen folgen in Kürze
-    </a>
-
-    <section class="music-section">
-
-        <h2>🎵 Die Hymne von Case for Change</h2>
-
-        <p class="music-text">
-            Hier kannst du die Hymne von Case for Change hören
-            und bereits einen ersten Eindruck davon bekommen,
-            welche Energie, Hoffnung und Veränderung hinter diesem Projekt steckt.
-            <br><br>
-            Manche Ideen kann man nicht nur verstehen —
-            man kann sie fühlen.
+        <p class="lead">
+            Case for Change gibt Menschen eine Stimme, die nicht nur Probleme sehen,
+            sondern Lösungen denken.
         </p>
 
-        <button class="music-button" onclick="toggleMusic()" id="musicBtn">
-            🎧 Die Hymne von Case for Change anhören
-        </button>
-
-        <audio id="bgmusic">
-            <source src="case-for-change2.mp3" type="audio/mpeg">
-            Dein Browser unterstützt keine Audiowiedergabe.
-        </audio>
-
-    </section>
-
-    <div class="future-box">
-
-        <p>
-            <span class="glow">Was wäre möglich,</span>
-            wenn Menschen nicht nur über Probleme sprechen,
-            sondern ihre Ideen öffentlich teilen würden?
+        <p class="text">
+            Wir glauben, dass echte Veränderung dort beginnt, wo Menschen den Mut haben,
+            Ideen auszusprechen und Verantwortung zu übernehmen.
+            Jede große Entwicklung beginnt mit einem ersten Gedanken.
         </p>
 
-        <br>
+        <a class="button" href="#">Informationen folgen in Kürze</a>
 
-        <p>
-            Case for Change möchte genau dafür Raum schaffen.
-            Für mutige Gedanken.
-            Für neue Perspektiven.
-            Für echte Veränderung.
-        </p>
+        <div class="music-box">
+            <button class="music-button" onclick="toggleMusic()" id="musicBtn">
+                🎧 Die Hymne von Case for Change anhören
+            </button>
 
-    </div>
+            <audio id="bgmusic">
+                <source src="case-for-change2.mp3" type="audio/mpeg">
+            </audio>
 
+            <p class="music-info">
+                Hier kannst du die Hymne von <strong>Case for Change</strong> hören.
+                Sie steht für Mut zur Veränderung, neue Perspektiven und den Glauben daran,
+                dass jeder Mensch etwas bewegen kann. Vielleicht spürst du schon beim Hören,
+                welche Energie und Vision hinter diesem Projekt steckt.
+            </p>
+        </div>
+
+        <div class="future-box">
+            <p>
+                <span class="glow">Was wäre möglich,</span>
+                wenn Menschen nicht nur über Probleme sprechen,
+                sondern ihre Ideen öffentlich teilen würden?
+            </p>
+        </div>
+
+        <div class="footer">
+            case4change.de · Geschichten. Ideen. Veränderung.
+        </div>
+
+    </main>
 </section>
 
-<footer>
-    © 2026 Case for Change
-</footer>
-
 <script>
-
 let playing = false;
 
 function toggleMusic(){
-
     const audio = document.getElementById("bgmusic");
     const button = document.getElementById("musicBtn");
 
@@ -256,7 +245,6 @@ function toggleMusic(){
         playing = false;
     }
 }
-
 </script>
 
 </body>
