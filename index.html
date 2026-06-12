@@ -103,9 +103,22 @@ h1{
     margin-bottom:25px;
 }
 
-audio{
-    width:100%;
-    max-width:700px;
+.music-button{
+    background:linear-gradient(90deg,#00e5ff,#7b61ff);
+    color:white;
+    border:none;
+    padding:18px 35px;
+    border-radius:50px;
+    font-size:18px;
+    font-weight:bold;
+    cursor:pointer;
+    transition:0.3s;
+    box-shadow:0 0 25px rgba(0,229,255,0.35);
+}
+
+.music-button:hover{
+    transform:translateY(-3px);
+    box-shadow:0 0 30px rgba(0,229,255,0.6);
 }
 
 .future-box{
@@ -188,7 +201,11 @@ footer{
             man kann sie fühlen.
         </p>
 
-        <audio controls>
+        <button class="music-button" onclick="toggleMusic()" id="musicBtn">
+            🎧 Die Hymne von Case for Change anhören
+        </button>
+
+        <audio id="bgmusic">
             <source src="case-for-change2.mp3" type="audio/mpeg">
             Dein Browser unterstützt keine Audiowiedergabe.
         </audio>
@@ -219,6 +236,28 @@ footer{
 <footer>
     © 2026 Case for Change
 </footer>
+
+<script>
+
+let playing = false;
+
+function toggleMusic(){
+
+    const audio = document.getElementById("bgmusic");
+    const button = document.getElementById("musicBtn");
+
+    if(!playing){
+        audio.play();
+        button.innerHTML = "⏸ Hymne pausieren";
+        playing = true;
+    }else{
+        audio.pause();
+        button.innerHTML = "🎧 Die Hymne von Case for Change anhören";
+        playing = false;
+    }
+}
+
+</script>
 
 </body>
 </html>
